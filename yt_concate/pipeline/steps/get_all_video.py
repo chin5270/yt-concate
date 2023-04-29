@@ -19,14 +19,11 @@ class GetVideoList(Step):
 
         video_links = []
         url = first_url
-        a= True
+  
         while True:
-            if a ==True:
-                inp = urllib.request.urlopen(url)
-                resp = json.load(inp)
-                print(resp)
-                a=False
-
+            
+            inp = urllib.request.urlopen(url)
+            resp = json.load(inp)
             for i in resp['items']: # {"item":[{"id":{"kind":"youtube#video"}},{},{}]}
                 if i['id']['kind'] == "youtube#video":
                     video_links.append(base_video_url + i['id']['videoId'])
@@ -34,6 +31,7 @@ class GetVideoList(Step):
             try:
                 next_page_token = resp['nextPageToken']
                 url = first_url + '&pageToken={}'.format(next_page_token)
+                
             except KeyError:
                 break
         return video_links
