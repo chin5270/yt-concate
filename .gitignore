@@ -161,3 +161,7 @@ cython_debug/
 
 # mac內建
 .DS_Store
+
+# learning
+
+learning.py
