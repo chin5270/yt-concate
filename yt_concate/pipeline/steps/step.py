@@ -5,7 +5,7 @@ class Step(ABC):
     def __init__(self):
         pass
     @abstractmethod
-    def process(self,data,inputs): # inputs是字典
+    def process(self,data,inputs,utils): # inputs是字典
         pass
 
 

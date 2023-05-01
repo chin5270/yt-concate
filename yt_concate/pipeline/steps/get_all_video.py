@@ -10,7 +10,7 @@ from yt_concate.pipeline.steps.step import StepException
 
 class GetVideoList(Step):
 
-    def process(self,data,inputs):
+    def process(self,data,inputs,utils):
         channel_id = inputs['channel_id']
         base_video_url = 'https://www.youtube.com/watch?v='
         base_search_url = 'https://www.googleapis.com/youtube/v3/search?'
@@ -21,7 +21,6 @@ class GetVideoList(Step):
         url = first_url
   
         while True:
-            
             inp = urllib.request.urlopen(url)
             resp = json.load(inp)
             for i in resp['items']: # {"item":[{"id":{"kind":"youtube#video"}},{},{}]}
