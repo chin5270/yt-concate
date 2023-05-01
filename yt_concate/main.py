@@ -2,9 +2,12 @@ import sys
 sys.path.append('./')
 
 from yt_concate.pipeline.pipeline import Pipeline
+from yt_concate.pipeline.steps.Preflight import Preflight
 from yt_concate.pipeline.steps.get_all_video import GetVideoList
+from yt_concate.pipeline.steps.download_caption import DownloadCaptions
+from yt_concate.utils import Utils
 
-channel_id = 'UCudk4X86eRN6H2psDpP2LFg'
+channel_id = 'UCucWV7tlbw5f9DYjicgEX_g'
 
 
 def main():
@@ -13,11 +16,13 @@ def main():
         }
 
     steps = [
+        Preflight(),
         GetVideoList(),
+        DownloadCaptions()
     ]
-    
+    utils = Utils()
     p = Pipeline(steps)
-    p.run(inputs)
+    p.run(inputs,utils)
 
 if __name__ =="__main__":
     main()
