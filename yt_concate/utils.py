@@ -19,6 +19,13 @@ class Utils:
         os.makedirs(VIDEOS_DIR,exist_ok=True)
         os.makedirs(CAPTIONS_DIR,exist_ok=True)
 
+    def get_video_list_filepath(self,channel_id):
+        return os.path.join(DOWNLOADS_DIR,channel_id+'.txt')
+
+    def get_video_list_exist(self,channel_id):
+        path = os.path.join(DOWNLOADS_DIR,channel_id+'.txt')
+        return os.path.exists(path) and os.path.getsize(path) > 0
+    
     @staticmethod
     def get_video_id(url):
         return url.split('=')[-1]
