@@ -19,22 +19,28 @@ class DownloadCaptions(Step):
             'writeautomaticsub': True,
             'skip_download': True,
             'subtitleslangs': ['en'],
-            'outtmpl': './downloads/captions/%(title)s.%(ext)s' }
-        
+            'outtmpl': './downloads/captions/%(id)s.%(ext)s'
+        }
+
         for url in data:
+            if utils.caption_file_exist(url):
+                print("Skip downloading subtitles.")
+                continue
+
+            video_id = url.split('=')[-1]
+            ydl_opts['outtmpl'] = f'./downloads/captions/{video_id}.%(ext)s'
+
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
+
 
             recursive = False
             convert_file = ConvertDirectories(CAPTIONS_DIR, recursive, "utf-8")
             convert_file.convert()
-            
-        for root, dirs, files in os.walk(CAPTIONS_DIR):
-                for file in files:
-                    if file.endswith(".vtt"):
-                        vtt_file_path = os.path.join(root, file)
-                        os.remove(vtt_file_path)
-                        print("Deleted:", vtt_file_path)
-
-
-            
+                
+            for root, dirs, files in os.walk(CAPTIONS_DIR):
+                    for file in files:
+                        if file.endswith(".vtt"): 
+                            vtt_file_path = os.path.join(root, file)
+                            os.remove(vtt_file_path)
+                            print("Deleted:", vtt_file_path)
