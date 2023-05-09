@@ -26,11 +26,10 @@ class Utils:
         path = os.path.join(DOWNLOADS_DIR,channel_id+'.txt')
         return os.path.exists(path) and os.path.getsize(path) > 0
     
-    @staticmethod
-    def get_video_id(url):
-        return url.split('=')[-1]
+    # @staticmethod
+    # def get_video_id(url):
+    #     return url.split('=')[-1]
     
-
-    def caption_file_exist(self,url):
-        path = os.path.join(CAPTIONS_DIR,self.get_video_id(url)+ '.en.srt')
+    def caption_file_exist(self,yt):
+        path = yt.caption_fillepath
         return os.path.exists(path) and os.path.getsize(path) > 0
