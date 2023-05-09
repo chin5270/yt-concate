@@ -4,6 +4,7 @@ sys.path.append('./')
 from yt_concate.pipeline.pipeline import Pipeline
 from yt_concate.pipeline.steps.Preflight import Preflight
 from yt_concate.pipeline.steps.get_all_video import GetVideoList
+from yt_concate.pipeline.steps.initialize_yt import InitializeYt
 from yt_concate.pipeline.steps.download_caption import DownloadCaptions
 from yt_concate.pipeline.steps.read_caption import ReadCaption
 from yt_concate.utils import Utils
@@ -19,6 +20,7 @@ def main():
     steps = [
         Preflight(),
         GetVideoList(),
+        InitializeYt(),
         DownloadCaptions(),
         ReadCaption(),
     ]
