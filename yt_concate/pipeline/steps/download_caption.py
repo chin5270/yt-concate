@@ -22,16 +22,16 @@ class DownloadCaptions(Step):
             'outtmpl': './downloads/captions/%(id)s.%(ext)s'
         }
 
-        for url in data:
-            if utils.caption_file_exist(url):
+        for yt in data:
+            if utils.caption_file_exist(yt):
                 print("Skip downloading subtitles.")
                 continue
 
-            video_id = url.split('=')[-1]
+            video_id = yt.id
             ydl_opts['outtmpl'] = f'./downloads/captions/{video_id}.%(ext)s'
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([url])
+                ydl.download([yt.url])
 
 
             recursive = False
@@ -44,3 +44,4 @@ class DownloadCaptions(Step):
                             vtt_file_path = os.path.join(root, file)
                             os.remove(vtt_file_path)
                             print("Deleted:", vtt_file_path)
+        return data
