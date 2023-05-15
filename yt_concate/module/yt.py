@@ -28,4 +28,4 @@ class Yt:
     def get_caption_filepath(self):
         return os.path.join(CAPTIONS_DIR,self.id+'.en.srt')
     def get_video_filepath(self):
-        return os.path.join(VIDEOS_DIR,self.id+'txt')
+        return os.path.join(VIDEOS_DIR,self.id+'.mp4')

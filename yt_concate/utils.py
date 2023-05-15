@@ -33,3 +33,6 @@ class Utils:
     def caption_file_exist(self,yt):
         path = yt.caption_fillepath
         return os.path.exists(path) and os.path.getsize(path) > 0
+    def video_file_exist(self,yt):
+        path = yt.video_fillepath 
+        return os.path.exists(path) and os.path.getsize(path) > 0
