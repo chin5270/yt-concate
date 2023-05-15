@@ -1,7 +1,5 @@
 import sys
 sys.path.append('./')
-import os
-from pprint import pprint
 
 from yt_concate.pipeline.steps.step import Step
 from yt_concate.settings import CAPTIONS_DIR
