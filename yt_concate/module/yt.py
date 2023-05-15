@@ -10,6 +10,15 @@ class Yt:
         self.caption_fillepath = self.get_caption_filepath()
         self.video_fillepath = self.get_video_filepath()
         self.captions = None
+
+    def __str__(self):
+        return '<Yt('+self.id+')>'
+    def __repr__(self):
+        content =':'.join(['id = '+str(self.id),
+                          'caption_fillepath = '+str(self.caption_fillepath),
+                          'video_fillepath  = '+str(self.video_fillepath )
+                          ])
+        return '<YT('+ content  + ')>'
        
 
     @staticmethod
