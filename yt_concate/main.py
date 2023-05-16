@@ -9,6 +9,7 @@ from yt_concate.pipeline.steps.download_caption import DownloadCaptions
 from yt_concate.pipeline.steps.read_caption import ReadCaption
 from yt_concate.pipeline.steps.search import Search
 from yt_concate.pipeline.steps.download_video import DownloadVideos
+from yt_concate.pipeline.steps.edit_video import EditVideo
 from yt_concate.utils import Utils
 
 channel_id = 'UCucWV7tlbw5f9DYjicgEX_g'
@@ -17,7 +18,8 @@ channel_id = 'UCucWV7tlbw5f9DYjicgEX_g'
 def main():
     inputs = {
         'channel_id' : channel_id,
-        'search_word':'photograph'
+        'search_word':'picture',
+        'limit':30,
         }
 
     steps = [
@@ -28,6 +30,7 @@ def main():
         ReadCaption(),
         Search(),
         DownloadVideos(),
+        EditVideo(),
     ]
     utils = Utils()
     p = Pipeline(steps)

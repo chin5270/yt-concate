@@ -11,7 +11,7 @@ class DownloadVideos(Step):
        
        yt_set = set([found.yt for found in data])
        
-    
+
 
        for yt in yt_set:
             url= yt.url
@@ -19,5 +19,5 @@ class DownloadVideos(Step):
                 print(f'found existing video file for {url} , skipping')
                 continue
             YouTube(url).streams.get_highest_resolution().download(output_path= VIDEOS_DIR ,filename = yt.id + '.mp4')
-         
-      
+       
+       return data
