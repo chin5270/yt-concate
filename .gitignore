@@ -169,3 +169,4 @@ cython_debug/
 
 learning.py
 test/
+test.py

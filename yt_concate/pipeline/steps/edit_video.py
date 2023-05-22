@@ -24,10 +24,16 @@ class EditVideo(Step):
 
     def parse_caption_time(self,caption_time) :
         start,end = caption_time.split(' --> ')
-        return self.parse_time_str(start),self.parse_time_str(end)
+        return self.parse_time_start_str(start),self.parse_time_end_str(end)
+        
+       
 
-    def parse_time_str(self,time_str):
+    def parse_time_start_str(self,time_str):
         h,m,s = time_str.split(':')
         s,ms = s.split(',')
-        return int(h),int(m),int(s)
+        return int(h),int(m),int(s)-2
+    def parse_time_end_str(self,time_str):
+        h,m,s = time_str.split(':')
+        s,ms = s.split(',')
+        return int(h),int(m),int(s)+2
         
